@@ -1,33 +1,37 @@
-import { useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Frontpage from './pages/frontpage';
+import FeedView from './pages/frontpage/components/FeedView';
+
+export const ContentContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+  //const [count, setCount] = useState(0)
+  const [movieFeedContent, setMovieFeedContent] = useState({});
+  const apiUrl = "/api/v4/feeds/page_01jwxh2p1me02sbhyxmht24cbp" // Correct proxy path
+
+  const getContent = useEffect(() => {
+    const fetchContent = async () => {
+      const response = await fetch(apiUrl);
+      const jsonContent = await response.json();
+      setMovieFeedContent(jsonContent)
+      //console.log(jsonContent)
+    }
+    fetchContent();
+
+  }, [])
+  console.log(movieFeedContent)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header></header>
+      <ContentContext.Provider value = {{movieFeedContent, setMovieFeedContent, apiUrl, getContent}}>
+        <div>
+          <Frontpage></Frontpage>
+        </div>
+      </ContentContext.Provider>
     </>
   )
 }
