@@ -8,7 +8,7 @@ function MovieView ({movie, styles}) {
     
     const imageSrc = movie?.image?.src ? movie.image.src :  "none";
 
-    const imageFittedSrc = feedAspect === '2/3' && imageSrc !== "none" ? imageSrc+"?location=moviePoster" : imageSrc
+    const imageFittedSrc = feedAspect === '2/3' && imageSrc !== "none" ? imageSrc+"?location=moviePoster" : imageSrc;
 
     //console.log(imageSrc)
     //console.log(feedAspect)
@@ -20,7 +20,7 @@ function MovieView ({movie, styles}) {
                 backgroundImage: `url(${imageFittedSrc})`,
                 ...styles}}>
             {/*<p>{movie ? movie.title : "Movie"}</p>*/}
-            {styles.layout.name === 'buttons' ? (
+            {styles.layout.name === "buttons" || imageSrc ==="none"? (
                 <p>{movie.title}</p>
             ) : null }
         </div>

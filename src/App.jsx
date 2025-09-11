@@ -1,9 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Frontpage from './pages/frontpage';
 import FeedView from './pages/frontpage/components/FeedView';
+import { Routes, Route } from 'react-router-dom'
 
 export const ContentContext = createContext();
 
@@ -27,10 +26,11 @@ function App() {
   return (
     <>
       <header></header>
+
       <ContentContext.Provider value = {{movieFeedContent, setMovieFeedContent, apiUrl, getContent}}>
-        <div>
-          <Frontpage></Frontpage>
-        </div>
+        <Routes>
+          <Route path="/" element = {<Frontpage/>}/>
+        </Routes>
       </ContentContext.Provider>
     </>
   )
