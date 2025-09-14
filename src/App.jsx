@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from 'react'
 import './App.css'
 import Frontpage from './pages/frontpage';
+import Moviepage from './pages/moviepage';
 import FeedView from './pages/frontpage/components/FeedView';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 
 export const ContentContext = createContext();
 
@@ -26,10 +27,14 @@ function App() {
   return (
     <>
       <header></header>
-
+      
       <ContentContext.Provider value = {{movieFeedContent, setMovieFeedContent, apiUrl, getContent}}>
+        <Link to={`/`}>
+          <h1>TV 2 Case</h1>
+        </Link>
         <Routes>
           <Route path="/" element = {<Frontpage/>}/>
+          <Route path="/movie/:id" element = {<Moviepage/>}/>
         </Routes>
       </ContentContext.Provider>
     </>

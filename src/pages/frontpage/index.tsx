@@ -7,7 +7,6 @@ function Frontpage(){
     const {movieFeedContent} = useContext(ContentContext);
     return (
         <section className='main'>
-            <h1>TV 2 Case</h1>
             {Array.isArray(movieFeedContent.feeds) && movieFeedContent.feeds.length > 0 ? (
                 movieFeedContent.feeds.map((feed, index) => (
                     <div key={index} className='feed'>

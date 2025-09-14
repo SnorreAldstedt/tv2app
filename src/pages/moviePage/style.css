@@ -1,0 +1,63 @@
+
+.info-movie-div {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width: 100%;
+    align-items: flex-end;
+    gap: 2rem;
+    justify-items: left;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    height: 60vh;
+    padding: 10px
+
+}
+
+.text-info {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-info h2,
+.text-info p {
+    color: #fff;
+    margin: 0 0 1rem 0;
+}
+
+.image-poster-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2/3;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 60%;
+}
+
+.movie-image{
+    width: 100vw;
+}
+
+.main{
+    width: 90vw;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    aspect-ratio: 16/9;
+    background-size: contain;
+}
+
+.text-info p {
+    text-align: left;
+}
+
+.price-tag{
+    background-color: rgb(128, 38, 211);
+    border-radius: 5px;
+    padding: 3px;
+}
+
