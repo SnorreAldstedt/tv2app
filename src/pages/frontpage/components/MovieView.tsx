@@ -1,7 +1,14 @@
 
+
+import { Movie, FeedStyles } from "../../../classes/interfaces";
 import { Link } from "react-router-dom";
 
-function MovieView ({movie, styles}) {
+interface MovieViewProps {
+    movie: Movie;
+    styles?: FeedStyles;
+}
+
+function MovieView({ movie, styles }: MovieViewProps) {
     function logMovie(){
         //console.log(movie)
     }
@@ -28,7 +35,7 @@ function MovieView ({movie, styles}) {
                 backgroundImage: `url(${imageFittedSrc})`,
                 ...styles}}>
             {/*<p>{movie ? movie.title : "Movie"}</p>*/}
-            {styles.layout.name === "buttons" || imageSrc ==="none"? (
+            {styles?.layout?.name === "buttons" || imageSrc ==="none"? (
                 <p>{movie?.title ? movie.title : "Movie"}</p>
             ) : null }
         </div>

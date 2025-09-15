@@ -1,6 +1,12 @@
+
+import { Movie } from "../../../classes/interfaces";
 import React from "react";
 
-const MovieComponent = ({ movie }) => {
+interface MovieComponentProps {
+    movie: Movie;
+}
+
+const MovieComponent = ({ movie }: MovieComponentProps) => {
     const imageLink = movie?.image?.src ? movie.image.src :  "none";
     const imagePoster = imageLink ? imageLink+"?location=moviePoster" : "none";
 
