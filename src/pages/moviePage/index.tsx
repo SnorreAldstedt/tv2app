@@ -1,41 +1,17 @@
-import { ContentContext } from "../../App"
-import { useContext, useEffect } from "react"
 import { useLocation } from "react-router-dom";
-import './style.css'
+import MovieComponent from "./components/MovieComponent";
+import { useEffect } from "react";
+import './style.css';
 
-function Moviepage(){
-
+function Moviepage() {
     const location = useLocation();
     const { movie } = location.state;
-    console.log(movie)
 
-    const imageLink = movie?.image?.src ? movie.image.src :  "none";
-    const imagePoster = imageLink ? imageLink+"?location=moviePoster" : "none"
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    const {movieFeedContent} = useContext(ContentContext);
-
-    useEffect(()=> {
-        window.scrollTo(0,0)
-    }, [])
-
-    return (
-        <section className="main" style= {{
-            background: `linear-gradient(to bottom, rgba(26,0,51,0.5) 0%, #110021ff 70%), url(${imageLink+"?width=1920"})`,
-            backgroundSize: "contain"}}>
-            <div className="info-movie-div">
-                <div className="text-info">
-                    <h2>{movie?.title ? movie.title : "Loading movie"}</h2>
-                    <p className="price-tag">
-                        {movie.labels && movie.labels.length > 0 ? movie.labels[0].text : ""}
-                    </p>
-                    <br/>
-                    <p>{movie?.description ? movie.description : "Loading movie"}</p>
-                </div>
-                <div className="image-poster-info" style={{backgroundImage: `url(${imagePoster})`, }}>
-                </div>
-            </div>
-        </section>
-    )
+    return <MovieComponent movie={movie} />;
 }
 
 export default Moviepage;
